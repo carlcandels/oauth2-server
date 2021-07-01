@@ -119,11 +119,14 @@ class OAuthServerException extends Exception
      */
     public static function invalidRequest($parameter, $hint = null, Throwable $previous = null)
     {
-        $errorMessage = 'The request is missing a required parameter, includes an invalid parameter value, ' .
-            'includes a parameter more than once, or is otherwise malformed.';
-        $hint = ($hint === null) ? sprintf('Check the `%s` parameter', $parameter) : $hint;
+        // $errorMessage = 'The request is missing a required parameter, includes an invalid parameter value, ' .
+        //     'includes a parameter more than once, or is otherwise malformed.';
+        // $hint = ($hint === null) ? sprintf('Check the `%s` parameter', $parameter) : $hint;
 
-        return new static($errorMessage, 3, 'invalid_request', 400, $hint, null, $previous);
+        // return new static($errorMessage, 3, 'invalid_request', 400, $hint, null, $previous);
+        $errorMessage = 'Client authentication failed';
+
+        return new static($errorMessage, 4, 'invalid_client', 401);
     }
 
     /**
